@@ -90,7 +90,7 @@ $ gsutil -m cp -r /path/to/dataset/tfrecord gs://my-bucket/dataset/
 
 AI病虫害画像診断システム 害虫判別器の開発にあたっては、背景への過学習を抑制するために、
 
-1. 葉や果実の形状を学習した ShapeMask モデルで背景を除去
+1. 葉や果実の形状を学習した [ShapeMask](https://github.com/ai-pest/shapemask) モデルで背景を除去
 1. 背景除去済みの画像を使って EfficientNet で学習・推論
 
 という **2段階識別** の手法を採用しました。この手法を適用することで、非適用時と比べて top-1 正確度が向上することを確認しています。
@@ -205,8 +205,6 @@ $ docker exec -it effnet python /path/to/efficientnet/main_v4rc5.py \
 * `train_and_eval` モードを削除。
 * 評価用のTFRecordデータも含めて学習する機能を追加（`--include_validation`）。
 * 学習時にJSONファイルを指定することで、複数クラスを結合して学習する機能を追加（`--translate_classes`）。
-
----
 
 [^1]: https://arxiv.org/abs/1905.11946
 [^2]: https://arxiv.org/abs/1710.09412
