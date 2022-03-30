@@ -1,0 +1,3 @@
+test/artifact
+__pycache__
+*.pyc
