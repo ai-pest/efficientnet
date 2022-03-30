@@ -1,0 +1,3 @@
+[submodule "shapemask"]
+	path = shapemask
+	url = git@github.com:ai-pest/shapemask.git
