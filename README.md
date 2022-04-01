@@ -12,8 +12,7 @@
 
 * Ubuntu 16.04 Xenial
 
-学習・評価には、深層学習用の高速演算装置 [TPU](https://cloud.google.com/tpu/) を使うことができます。TPU を使用するには、
-[Google Cloud Platform](https://cloud.google.com/) のアカウントが必要です。
+学習・評価には、深層学習用の高速演算装置 [TPU](https://cloud.google.com/tpu/) を使うことができます。TPU を使用するには、[Google Cloud Platform](https://cloud.google.com/) のアカウントが必要です。
 
 ## インストール手順
 
@@ -61,7 +60,7 @@ my_dataset/
 ```
 
 ### TFRecord 形式への変換
-学習前に、データセットを TFRecord 形式に変換（シリアル化）する必要があります。 シリアル化には添付のスクリプト `efficientnet/imagenet_to_gcs.py` を使います。
+学習前に、データセットを TFRecord 形式に変換（シリアル化）する必要があります。シリアル化には添付のスクリプト `efficientnet/imagenet_to_gcs.py` を使います。
 
 次のコマンドで、TFRecord に変換します。
 
@@ -90,7 +89,7 @@ $ gsutil -m cp -r /path/to/dataset/tfrecord gs://my-bucket/dataset/
 
 AI病虫害画像診断システム 害虫判別器の開発にあたっては、背景への過学習を抑制するために、
 
-1. 葉や果実の形状を学習した ShapeMask モデルで背景を除去
+1. 葉や果実の形状を学習した [ShapeMask](https://github.com/ai-pest/shapemask) モデルで背景を除去
 1. 背景除去済みの画像を使って EfficientNet で学習・推論
 
 という **2段階識別** の手法を採用しました。この手法を適用することで、非適用時と比べて top-1 正確度が向上することを確認しています。
@@ -136,7 +135,7 @@ $ docker exec -it effnet python /work/repo/main_v4rc5.py \
 * `--resize_method`: リサイズ方式。`pad_and_resize` (パディング) または `None` (拡大・縮小)。
 * `--train_batch_size`: 学習時バッチサイズ
 * スケジュール（下記のいずれか1つ）
-  * `--transfer_schedule`: 転移学習スケジュール
+  * `--transfer_schedule`: 転移学習スケジュール  
     `{head層学習エポック},{全レイヤ学習エポック}` を指定。
   * `--train_steps`: 学習ステップ数（全レイヤ学習のみ実施）
 * `--num_train_images`: 学習画像の枚数
